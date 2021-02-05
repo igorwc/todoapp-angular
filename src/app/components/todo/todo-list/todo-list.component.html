@@ -1,0 +1,128 @@
+<div class="col-sm-12 pt-5 text-right">
+  <div class="col-md-12">
+    <button mat-icon-button   aria-label="Example icon button with a home icon" (click)="onClickAddTodo()">
+      <mat-icon class="addBtn">add</mat-icon>
+    </button>
+
+
+
+  </div>
+</div>
+
+<div class="col-sm-12 pt-2">
+  <div class="col-md-12">
+    <table mat-table [dataSource]="todos" class="mat-elevation-z4">
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>#</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="task">
+        <th mat-header-cell *matHeaderCellDef>Task</th>
+        <td mat-cell *matCellDef="let element">{{ element.task }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="who">
+        <th mat-header-cell *matHeaderCellDef>Who</th>
+        <td mat-cell *matCellDef="let element">{{ element.who }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="dueDate">
+        <th mat-header-cell *matHeaderCellDef>Due Date</th>
+        <td mat-cell *matCellDef="let element">{{ element.dueDate | date:'dd/MM/yyyy' }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="done">
+        <th mat-header-cell *matHeaderCellDef>Done?</th>
+        <td mat-cell *matCellDef="let element">
+          <i
+            (click)="toggleAction(element.id)"
+            class="fas"
+            [ngClass]="{
+              'fa-check-circle': element.done,
+              'fa-minus-circle': !element.done
+            }"
+          >
+          </i>
+        </td>
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+            mat-flat-button color="primary"
+            class="actionbtn"
+              (click)="onClickEditTodoDetail(element.id)"
+            >
+              Edit
+            </button>
+            <button
+            mat-flat-button color="warn"
+            class="actionbtn"
+              (click)="onClickTodoDelete(element.id)"
+            >
+              Delete
+            </button>
+          </td>
+        </ng-container>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  <!-- <div class="col-md-12">
+    <table class="table table-bordered table-hover table-striped">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col" class="text-center">#</th>
+          <th scope="col">Task</th>
+          <th scope="col">Who</th>
+          <th scope="col">Due Date</th>
+          <th scope="col">Done</th>
+          <th scope="col" class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let todo of todos">
+          <td class="text-center">{{ todo.id }}</td>
+          <td>{{ todo.task }}</td>
+          <td>{{ todo.who }}</td>
+          <td>{{ todo.dueDate }}</td>
+          <td>
+            <i
+              (click)="toggleAction(todo.id)"
+              class="fas"
+              [ngClass]="{
+                'fa-check-circle': todo.done,
+                'fa-minus-circle': !todo.done
+              }"
+            >
+            </i>
+          </td>
+          <td width="150" class="text-center">
+            <button
+              type="button"
+              class="btn btn-info btn-sm mr-2"
+              (click)="onClickEditTodoDetail(todo.id)"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger btn-sm"
+              (click)="onClickTodoDelete(todo.id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+</div>

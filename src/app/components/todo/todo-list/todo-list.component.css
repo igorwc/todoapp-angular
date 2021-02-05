@@ -1,0 +1,40 @@
+.fa-check-circle {
+  color: green;
+}
+
+.fa-minus-circle{
+  color: red;
+}
+
+table{
+  width: 100%;
+ }
+
+ .mat-column-actions {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 15% !important;
+  width: 15% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+span.mat-button-wrapper{
+  color: aliceblue;
+}
+
+.actionbtn{
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+}
+
+.addBtn {
+  font-size: 40px;
+}
